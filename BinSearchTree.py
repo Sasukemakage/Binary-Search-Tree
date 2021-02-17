@@ -1,64 +1,64 @@
 ﻿class SearchBinTree:
-    def __init__(self, valeur):
-        self.v = valeur
-        self.fg = None
-        self.fd = None
+    def __init__(self, value):
+        self.v = value
+        self.LeftChild = None
+        self.RightChild = None
 
-    def CreateChild(self,valeur):
-        if valeur > self.v:
-            if self.fd == None:
-                self.fd = SearchBinTree(valeur)
+    def CreateChild(self,value):
+        if value > self.v:
+            if self.RightChild == None:
+                self.RightChild = SearchBinTree(value)
             else:
-                return SearchBinTree.CreateChild(self.fd, valeur)
-        if valeur < self.v:
-            if self.fg == None:
-                self.fg = SearchBinTree(valeur)
+                return SearchBinTree.CreateChild(self.RightChild, value)
+        if value < self.v:
+            if self.LeftChild == None:
+                self.LeftChild = SearchBinTree(value)
             else:
-                return SearchBinTree.CreateChild(self.fg, valeur)
+                return SearchBinTree.CreateChild(self.LeftChild, value)
 
     def get_v(self):
         return self.v
 
     def get_LeftChild(self):
-        return self.fg
+        return self.LeftChild
 
     def get_RightChild(self):
-        return self.fd
+        return self.RightChild
 
-    def taille(self):
+    def size(self):
         if self == None:
             return 0
         else:
-            return(1+SearchBinTree.taille(self.fg)+SearchBinTree.taille(self.fd))
+            return(1+SearchBinTree.size(self.LeftChild)+SearchBinTree.size(self.RightChild))
 
-    def hauteur(self):
+    def height(self):
         if self == None:
             return 0
         else:
-            return(1+max(SearchBinTree.hauteur(self.fg),SearchBinTree.hauteur(self.fd)))
+            return(1+max(SearchBinTree.height(self.LeftChild),SearchBinTree.height(self.RightChild)))
 
-    def affiche(self):
-        """permet d'afficher un arbre"""
+    def display(self):
+        """ Allow to display the tree in the form of lists """
         if self==None:
             return None
         else :
-            return [self.v,SearchBinTree.affiche(self.fg),SearchBinTree.affiche(self.fd)]
+            return [self.v,SearchBinTree.display(self.LeftChild),SearchBinTree.display(self.RightChild)]
     
     # Method allowing to check the existence of a value in the tree
     
-    def searchValue(self, valeur): 
+    def searchValue(self, value): 
         if self == None: # Return False when the value doesn't exist
             return False
-        elif valeur == self.v: # Return True when the value is found
+        elif value == self.v: # Return True when the value is found
             return True
-        elif valeur > self.v:
-            return SearchBinTree.searchValue(self.fd, valeur)
-        elif valeur < self.v:
-            return SearchBinTree.searchValue(self.fg, valeur)
+        elif value > self.v:
+            return SearchBinTree.searchValue(self.RightChild, value)
+        elif value < self.v:
+            return SearchBinTree.searchValue(self.LeftChild, value)
 
 
-""" Tests """
-
+""" Tests """ 
+          
 rc = SearchBinTree(6) # New Instance ( = Root value )
 
 rc.CreateChild(8)
@@ -66,9 +66,8 @@ rc.CreateChild(2)
 rc.CreateChild(1)
 rc.CreateChild(5)
 
-print(rc.affiche())
-print(rc.taille())
+print(rc.display())
+print(rc.size())
 
 print(rc.searchValue(8)) # Presente in this tree
 print(rc.searchValue(1165)) # Not presente in this tree
-
