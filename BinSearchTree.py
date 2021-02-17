@@ -25,17 +25,17 @@
     def get_RightChild(self):
         return self.fd
 
-    def taille(self):
+    def size(self):
         if self == None:
             return 0
         else:
-            return(1+SearchBinTree.taille(self.fg)+SearchBinTree.taille(self.fd))
+            return(1+SearchBinTree.size(self.fg)+SearchBinTree.size(self.fd))
 
-    def hauteur(self):
+    def height(self):
         if self == None:
             return 0
         else:
-            return(1+max(SearchBinTree.hauteur(self.fg),SearchBinTree.hauteur(self.fd)))
+            return(1+max(SearchBinTree.height(self.fg),SearchBinTree.height(self.fd)))
 
     def affiche(self):
         """permet d'afficher un arbre"""
@@ -69,7 +69,7 @@ rc.CreateChild(5)
 """ Tests """
 
 print(rc.affiche())
-print(rc.taille())
+print(rc.size())
 
 print(rc.searchValue(8)) # Presente in this tree
 print(rc.searchValue(1165)) # Not presente in this tree
