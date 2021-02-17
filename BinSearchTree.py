@@ -43,11 +43,13 @@
             return None
         else :
             return [self.v,SearchBinTree.affiche(self.fg),SearchBinTree.affiche(self.fd)]
-    # Méthode permettant de vérifier l'existence d'une valeur dans l'arbre
+    
+    # Method allowing to check the existence of a value in the tree
+    
     def searchValue(self, valeur): 
-        if self == None: # Renvoie False si la valeur n'existe pas
+        if self == None: # Return False when the value doesn't exist
             return False
-        elif valeur == self.v: # Renvoie True lorsque l'on trouve la valeur
+        elif valeur == self.v: # Return True when the value is found
             return True
         elif valeur > self.v:
             return SearchBinTree.searchValue(self.fd, valeur)
@@ -57,7 +59,7 @@
 
 
 
-rc = SearchBinTree(6) # Valeur de la racine
+rc = SearchBinTree(6) # New Instance ( = Root value )
 
 rc.CreateChild(8)
 rc.CreateChild(2)
@@ -69,6 +71,6 @@ rc.CreateChild(5)
 print(rc.affiche())
 print(rc.taille())
 
-print(rc.searchValue(8)) # Présent dans l'arbre
-print(rc.searchValue(1165)) # Non présent dans l'arbre
+print(rc.searchValue(8)) # Presente in this tree
+print(rc.searchValue(1165)) # Not presente in this tree
 
