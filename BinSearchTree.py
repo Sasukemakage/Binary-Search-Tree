@@ -57,7 +57,7 @@
             return SearchBinTree.searchValue(self.fg, valeur)
 
 
-
+""" Tests """
 
 rc = SearchBinTree(6) # New Instance ( = Root value )
 
@@ -65,8 +65,6 @@ rc.CreateChild(8)
 rc.CreateChild(2)
 rc.CreateChild(1)
 rc.CreateChild(5)
-
-""" Tests """
 
 print(rc.affiche())
 print(rc.taille())
