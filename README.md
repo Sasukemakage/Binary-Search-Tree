@@ -1,2 +1,2 @@
-# Search-Binary-Tree
-Python        ||        Search Binary Tree
+# Binary-Search-Tree
+Python        ||        Binary Search Tree
